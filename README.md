@@ -11,5 +11,5 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/BalliAsghar/killport/main/
 ## Usage
 
 ```bash
-kill-port 3000
+killport 3000
 ```
