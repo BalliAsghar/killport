@@ -15,3 +15,12 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/BalliAsghar/killport/main/
 ```bash
 killport 3000
 ```
+
+### Options
+
+- `-f` or `--force` : Force kill the process
+- `-u` or `--udp` : Kill the process running on UDP port
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
