@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Install KillPort
-# Author: Balli Asghar
+# Author: https://github.com/BalliAsghar
 
 set -e  # Exit immediately if a command exits with a non-zero status
 
