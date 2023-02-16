@@ -2,6 +2,8 @@
 
 ### Kill Port is a simple command line tool to kill a process running on a specific port.
 
+![Kill Port](video.gif)
+
 ## Installation
 
 ```bash
