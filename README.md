@@ -10,6 +10,13 @@
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/BalliAsghar/killport/main/install.sh)"
 ```
 
+### macos users can also install using brew
+
+```bash
+brew tap BalliAsghar/apps
+brew install killport
+```
+
 ## Usage
 
 ```bash
