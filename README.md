@@ -4,6 +4,10 @@
 
 ## Installation
 
+```bash
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/BalliAsghar/killport/main/install.sh)"
+```
+
 ## Usage
 
 ```bash
