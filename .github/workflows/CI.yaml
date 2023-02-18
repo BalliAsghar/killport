@@ -33,4 +33,4 @@ jobs:
             -H 'Content-Type: application/json' \
             -H 'X-GitHub-Api-Version: 2022-11-28' \
             -d '{"ref":"main","inputs":{"sha256": "${{ github.sha }}"}}' \
-            https://api.github.com/repos/BalliAsghar/homebrew-appstest/actions/workflows/48771309/dispatches
+            https://api.github.com/repos/BalliAsghar/homebrew-apps/actions/workflows/48771309/dispatches
