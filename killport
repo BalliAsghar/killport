@@ -12,7 +12,6 @@ YELLOW='\033[0;33m'
 
 # Parse command line arguments
 force=0
-interactive=0
 udp=0
 port=""
 
