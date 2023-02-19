@@ -71,6 +71,12 @@ fi
 # set the trap to call the cleanup function
 trap cleanup SIGINT SIGTERM
 
+# Try running the command and capture any errors
+if ! pids=$(eval "$command" 2>/dev/null | awk '{if(NR>1) print $2}'); then
+    echo -e "${RED}Error: Failed to find process using port $port${NC}" >&2
+    exit 1
+fi
+
 pids=$(eval "$command" | awk '{if(NR>1) print $2}')
 if [[ -z $pids ]]; then
 
@@ -89,11 +95,16 @@ if [[ $force -eq 0 ]]; then
     fi
 fi
 
+# 
 
 # Kill the process(es)
 for pid in $pids; do
-    echo "Killing process $pid"
-    eval "$kill_command $pid"
+    # Try running the kill command and capture any errors
+    if ! eval "$kill_command $pid" 2>/dev/null; then
+        echo -e "${RED}Error: Failed to kill process with PID $pid${NC}" >&2
+    else
+        echo -e "PID ${YELLOW}$pid${NC} killed"
+    fi
 done
 
 echo -e "${GREEN}Done${NC}"
