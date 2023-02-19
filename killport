@@ -71,6 +71,12 @@ fi
 # set the trap to call the cleanup function
 trap cleanup SIGINT SIGTERM
 
+# Check if the lsof and kill commands are available
+if ! command -v lsof >/dev/null 2>&1 || ! command -v kill >/dev/null 2>&1; then
+    echo -e "${RED}Error: lsof and kill commands are required${NC}" >&2
+    exit 1
+fi
+
 # Try running the command and capture any errors
 if ! pids=$(eval "$command" 2>/dev/null | awk '{if(NR>1) print $2}'); then
     echo -e "${RED}Error: Failed to find process using port $port${NC}" >&2
