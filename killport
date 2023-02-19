@@ -9,6 +9,7 @@
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[0;33m'
+NC='\033[0m' # No Color
 
 # Parse command line arguments
 force=0
@@ -79,7 +80,7 @@ fi
 
 # Prompt the user before killing the process(es), if force mode is not enabled
 if [[ $force -eq 0 ]]; then
-    echo "The following process(es) are using port $port:"
+    echo -e "${YELLOW}The following process(es) are using port $port:${NC}"
     eval "$command"
     echo -e -n "Kill the process(es)? [y/N] "
     read answer
