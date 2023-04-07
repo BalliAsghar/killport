@@ -31,8 +31,11 @@ else
 fi
 
 # Validate the port number
-if ! [[ $port =~ ^[0-9]+$ && $port -gt 0 && $port -lt 65536 ]]; then
+if ! ((port >= 1 && port <= 65535)); then
     echo -e "${RED}Invalid port number: $port${NC}" >&2
+    exit 1
+elif ((port <= 1023)); then
+    echo -e "${RED}Port $port is a system port and cannot be killed${NC}" >&2
     exit 1
 fi
 
