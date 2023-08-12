@@ -31,7 +31,7 @@ else
 fi
 
 # Validate the port number
-if ! ((port >= 1 && port <= 65535)); then
+if ! expr "$port" + 1 >/dev/null 2>&1 || ! ((port >= 1 && port <= 65535)); then
     echo -e "${RED}Invalid port number: $port${NC}" >&2
     exit 1
 elif ((port <= 1023)); then
