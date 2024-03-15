@@ -15,6 +15,7 @@ NC='\033[0m' # No Color
 force=0
 udp=0
 port=""
+yes=0
 
 # write a cleanup function which basically aborts the script
 cleanup() {
@@ -51,6 +52,10 @@ while [[ $# -gt 0 ]]; do
             udp=1
             shift
             ;;
+	-y|--y|-yes|--yes|-Yes|--Yes|-Y|--Y|-YES|--YES)
+	    yes=1
+	    shift
+	    ;;
         *)
             echo -e "${RED}Invalid argument: $1${NC}" >&2
             exit 1
@@ -97,10 +102,12 @@ fi
 if [[ $force -eq 0 ]]; then
     echo -e "${YELLOW}The following process(es) are using port $port:${NC}"
     eval "$command"
-    echo -e -n "Kill the process(es)? [y/N] "
-    read answer
-    if [[ $answer != "y" && $answer != "Y" ]]; then
-        cleanup
+    if [[ $yes -eq 0 ]]; then
+        echo -e -n "Kill the process(es)? [y/N] "
+        read answer
+    	if [[ $answer != "y" && $answer != "Y" ]]; then
+        	cleanup
+    	fi
     fi
 fi
 
